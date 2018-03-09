@@ -47,6 +47,7 @@ from urllib.parse import unquote, parse_qs
 import os
 import threading
 from socketserver import ThreadingMixIn
+import codecs
 
 class ThreadHTTPServer(ThreadingMixIn, http.server.HTTPServer):
     "This is an HTTPServer that supports thread-based concurrency"
@@ -56,17 +57,17 @@ memory = {}
 form = '''<!DOCTYPE html>
 <title>Bookmark Server</title>
 <form method="POST">
-    <label>Long URI:
+    <label>Long URL:
         <input name="longuri">
     </label>
     <br>
-    <label>Short name:
+    <label>Short URL:
         <input name="shortname">
     </label>
     <br>
-    <button type="submit">Save it!</button>
+    <button type="submit">Submit Link</button>
 </form>
-<p>URIs I know about:
+<p>URLs Saved:
 <pre>
 {}
 </pre>
